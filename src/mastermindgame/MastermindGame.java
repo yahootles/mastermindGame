@@ -30,6 +30,7 @@ public class MastermindGame {
         numberOfOptions = getNumberOfOptions(kinput);
 
         solution = generateSolution(lengthOfSolution, numberOfOptions);
+        System.out.println("A sequence has been generated. It is " + lengthOfSolution + " numbers long, and each number can be 1-" + numberOfOptions + ".");
 
     }
 
@@ -104,7 +105,6 @@ public class MastermindGame {
 
         for (int i = 0; i < randSeq.length; i++) {
             randSeq[i] = (int) (Math.random() * numOptions + 1);
-            System.out.println(randSeq[i]);
         }
 
         return randSeq;
@@ -115,6 +115,8 @@ public class MastermindGame {
         String[] splitInput;
         String input;
         int[] finalGuess = new int[numGuesses];
+        
+        System.out.println("Enter your guess with spaces between the numbers(ex. 4 1 4 3 2:");
 
         do {
             try {
@@ -132,10 +134,39 @@ public class MastermindGame {
                 valid = true;
                 
             } catch (Exception e) {
-
+                System.out.println("That is not a valid input. Please enter a valid guess:");
             }
         } while (valid != true);
 
         return finalGuess;
+    }
+    
+    /**
+     * Does a bubble sort on an array, then returns the array
+     * @param array
+     * @return 
+     */
+    public static int[] bubbleSort(int[] array){
+         //declare local variables
+        boolean sorted = false;
+        int temp = 0;
+        
+        //loop that runs unil sorted
+        while(sorted == false){
+            sorted = true;
+            for(int i = 0; i < array.length - 1; i++){
+                //test to see if the smaller index contains a larger number
+                if(array[i] > array[i+1]){
+                    //switch places
+                    temp = array[i];
+                    array[i] = array[i+1];
+                    array[i+1] = temp;
+                    sorted = false;
+                }
+            }
+        }
+        temp += 0;
+        //returns the sorted array
+        return array;
     }
 }
